@@ -31,9 +31,10 @@ def record_audio(duration=10, samplerate=16000):
         return tmpfile.name
 
 if st.button("🎤 Record 10 sec audio"):
-    st.info("Recording... speak now")
+    info = st.info("Recording... speak now")
     audio_file_path = record_audio()
     st.audio(audio_file_path)
+    info.empty()
 
     st.write("Transcribing...")
     transcript = transcribe_audio(audio_file_path, model_size="tiny")
